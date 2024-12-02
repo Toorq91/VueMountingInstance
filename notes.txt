@@ -1,0 +1,63 @@
+* beforeCreate()
+Beskrivelse: Kalles før data og reaktive egenskaper er initialisert .this er opprettet, men den har ikke tilgang til data eller andre komponentfunksjoner.
+Bruksområde: Brukes sjelden, kanskje for å konfigurere globale innstillinger eller logge før alt er klart.
+Eksempel:
+beforeCreate() {
+    console.log('beforeCreate() function called!', this.message); // this.message er undefined
+}
+
+* created() 
+Beskrivelse: Kalles etter at komponenten er initialisert, og data er tilgjengelig. Ingen DOM-relaterte operasjoner er mulig ennå.
+Bruksområde: Brukes ofte til å hente data, sette opp observere eller andre ikke-visuelle operasjoner.
+Eksempel:
+created() {
+    console.log('created() function called!', this.message); // this.message er "Hello world!"
+}
+
+* beforeMount()
+Beskrivelse: Kalles før komponenten festes til DOM (før den rendres). this.$el er tilgjengelig, men ikke oppdatert.
+Bruksområde: Brukes sjelden, men kan være nyttig for logging eller debugging.
+Eksempel:
+beforeMount() {
+    console.log('beforeMount() function called!', this.$el); // this.$el er undefined eller en mal
+}
+
+* mounted()
+Beskrivelse: Kalles etter at komponenten er rendret og lagt til i DOM. Nå kan du samhandle med DOM-elementer.
+Bruksområde: Brukes ofte til DOM-manipulasjon eller tredjepartsbiblioteker som trenger tilgang til DOM.
+Eksempel:
+mounted() {
+    console.log('mounted() function called!', this.$el); // this.$el refererer til det rendrerte elementet
+}
+
+* beforeUpdate()
+Beskrivelse: Kalles rett før reaktive data forårsaker en oppdatering i DOM.
+Bruksområde: Brukes til å forberede noe før en endring vises.
+Eksempel:
+beforeUpdate() {
+    console.log('beforeUpdate() function called!'); // Kalles før DOM oppdateres
+}
+
+* updated()
+Beskrivelse: Kalles etter at reaktive data har forårsaket en oppdatering i DOM.
+Bruksområde: Brukes til å reagere på DOM-endringer eller oppdatere noe som avhenger av DOM.
+Eksempel:
+updated() {
+    console.log('updated() function called!'); // Kalles etter DOM oppdateres
+}
+
+* beforeUnmount()
+Beskrivelse: Kalles rett før komponenten fjernes fra DOM.
+Bruksområde: Brukes til å rydde opp i eventuelle ressurser, som tidsur eller lyttere.
+Eksempel:
+beforeUnmount() {
+    console.log('beforeUnmount() function called!');
+}
+
+* unmounted()
+Beskrivelse: Kalles etter at komponenten er fjernet fra DOM.
+Bruksområde: Brukes til å bekrefte at komponenten er fullstendig fjernet.
+Eksempel:
+unmounted() {
+    console.log('unmounted() function called!');
+}
